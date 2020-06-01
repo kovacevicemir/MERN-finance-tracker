@@ -4,13 +4,15 @@ const colors = require('colors')
 const morgan = require('morgan')
 
 dotenv.config({path: './config/config.env'})
+const transactions = require('./routes/transactions')
 
 const app = express()
 
-app.get('/', (req, res) => { res.send('hello')})
+app.use('/api/v1/transactions', transactions)
 
 
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT,
-     console.log(`server is running in ${process.env.NODE_ENV} on Port:${PORT}`.yellow.bold))
+     console.log(`server is running in ${process.env.NODE_ENV} 
+     on Port:${PORT}`.yellow.bold))
